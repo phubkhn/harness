@@ -1,0 +1,20 @@
+id: protected-paths
+version: 1.0.0
+description: The paths that no agent is allowed to write to. This is enforced by hooks/check-protected-paths.
+severity: blocking
+applies_to: [agent, hook]
+paths:
+  - rules/**
+  - hooks/**
+  - agents/**/manifest.yaml
+  - skills/**/manifest.yaml
+  - .claude-plugin/**
+  - registry/**
+escalate_paths:
+  - "**/auth/**"
+  - "**/security/**"
+  - "**/migration/**"
+  - "**/migrations/**"
+  - "**/deploy/**"
+  - "**/production/**"
+note: escalate_paths are not denied automatically, but an agent that touches these paths must stop and ask for clear confirmation before writing.

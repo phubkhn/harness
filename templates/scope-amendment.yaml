@@ -1,0 +1,29 @@
+# Copy this file when you need to extend a task-spec that is CURRENTLY RUNNING (execute/plan)
+# and the original allowed_scope/constraints/acceptance_criteria does not allow it — AFTER you
+# have stopped and asked for real confirmation (not decided on your own). This is the concrete
+# form of the `no-self-edit` invariant (rules/safety-invariants.yaml): "an agent must never
+# change its own task spec, acceptance criteria..." — the change must live in
+# A SEPARATE FILE like this one, not written directly over the original task-spec.
+#
+# File name: <task_id>-scope-amendment-<NN>.yaml, in the same folder as the task-spec.
+# After it is created, the original task-spec may only add EXACTLY 1 reference line (field
+# `scope_amendments: [...]`) — adding that reference line should be done by a
+# role other than the agent running the task (e.g. solution-architect, or a
+# human), not by the same agent that asked for the amendment.
+task_id: ""
+amendment_id: ""              # e.g.: TASK-F1-AMEND-01
+kind: ""                      # scope | acceptance_criteria | constraint
+requested_by: ""               # which role/agent needs this change (e.g. "developer")
+requested_at: ""               # YYYY-MM-DD
+reason: ""                     # why the original allowed_scope/constraints/AC is not enough
+
+# Fill in only the GROUP that matches `kind` above, leave the groups you do not use empty —
+# do not delete the keys.
+additional_allowed_paths: []   # used when kind: scope
+additional_acceptance_criteria: []  # used when kind: acceptance_criteria — each item is one sentence summarizing a new AC
+additional_constraints: []     # used when kind: constraint
+
+approved_by: ""                 # the real person/role who confirmed this — NOT the same agent asking for the amendment
+approved_at: ""                 # YYYY-MM-DD
+approval_channel: ""            # how the confirmation happened (e.g. "AskUserQuestion during the plan session")
+status: ""                      # approved | rejected | pending

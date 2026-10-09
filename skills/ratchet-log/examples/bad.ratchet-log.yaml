@@ -1,0 +1,12 @@
+# expect_fail: missing control_added
+entries:
+  - id: RATCHET-003
+    task_id: TASK-060
+    date: "2026-03-07"
+    phase: verify
+    failure_class: consistency
+    description: "AC-3 failed because the output was not consistent between two runs."
+    root_cause: "Not investigated yet."
+    control_added: ""
+    status: closed
+    owner: phudd

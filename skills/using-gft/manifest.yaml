@@ -1,0 +1,17 @@
+id: using-gft
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Use this when starting any request related to the intake/spec/plan/execute/verify/review SDLC lifecycle of GFT Harness — look up registry/activation-rules.yaml to find the agent/skill that needs to be active before acting, instead of guessing or skipping the routing step.'
+activation:
+  phases: []  # meta-skill: active across every phase through the SessionStart hook, not tied to one specific phase
+authority: proposal
+output:
+  artifact: null  # no artifact produced — the output is a routing decision for an agent/skill
+verification:
+  method: script
+  command: scripts/validate.sh
+  pass_criteria:
+    - registry/activation-rules.yaml does not activate any agent/skill that does not exist (lint_registry)
+    - every agents/*/skills/* on disk is registered in registry/capability-catalog.yaml
+content_hash: 0c68d0a4aa47abdd1c9146f0c224e6ac8dd13cd4cdddc728e38ba134b015ef5c

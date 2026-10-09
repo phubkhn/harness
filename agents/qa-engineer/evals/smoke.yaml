@@ -1,0 +1,9 @@
+# Scaffold: no eval runner executes this file yet (see agents/README.md).
+id: qa-engineer-smoke
+agent: qa-engineer
+scenario: "A task spec with 2 acceptance criteria, needing matching checks designed and verify-change run."
+expected:
+  schema_valid: true
+  policy_violations: 0
+  terminal_state: success-or-escalated
+status: scaffold-only

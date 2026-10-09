@@ -1,0 +1,19 @@
+id: task-spec
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Turns a raw request into a versioned, testable task contract — outcome, acceptance criteria, allowed/protected scope, risk tier. Use this before starting any implementation work. Do NOT use it to choose between several architecture options (use `adr`) or to measure the impact on many modules (use `impact-analysis`) — task-spec assumes the scope is already clear.'
+activation:
+  phases: [spec]
+authority: proposal
+output:
+  artifact: task-spec.yaml
+  template: templates/task-spec.yaml
+  suggested_dir: docs/spec/  # suggestion (H-07 pilot) — not required, a project can override this through .gft/project.yaml
+verification:
+  method: script
+  command: scripts/validate.sh task-spec <path-to-filled-task-spec.yaml>
+  pass_criteria:
+    - all required fields are present: outcome, acceptance_criteria, allowed_scope, protected_scope, risk_tier
+    - every item in acceptance_criteria has a stable id (not just 1 item)
+content_hash: ba929078d154ece0f65687e4c44d8ca7446fcfccadb6ea343b08256b60938c18

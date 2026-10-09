@@ -1,0 +1,9 @@
+# Copy this file when running test-plan, before implementation.
+task_id: ""                    # id of the task-spec that this test-plan covers
+cases:
+  - id: ""                     # a stable id, e.g. TC-1
+    acceptance_criteria_ref: "" # id of the acceptance criterion in the task-spec that this case verifies (e.g. AC-1)
+    kind: ""                   # unit | integration | e2e | manual
+    description: ""
+    covers_negative_path: false # true if this case tests an error/edge case, not just the happy path
+open_questions: []             # questions not yet settled about test data, environment, or oracle

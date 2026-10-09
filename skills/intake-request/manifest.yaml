@@ -1,0 +1,22 @@
+id: intake-request
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Turn a rough request or ticket into a testable intake brief — business goal, stakeholder, success metric, definition of done. Use this when the business goal, stakeholder, or success metric is not clear yet, before writing a task-spec. Do NOT use it when the request is already clear (you know the outcome, who needs it, and how to measure it) — go straight to `task-spec`. Do not create an intake brief for every ticket.'
+activation:
+  phases: [intake]
+authority: proposal
+output:
+  artifact: intake-brief.yaml
+  template: templates/intake-brief.yaml
+  suggested_dir: docs/intake/  # suggestion (H-07 pilot) — not required, the project can override this in .gft/project.yaml
+verification:
+  method: script
+  command: scripts/validate.sh intake-request <path-to-filled-intake-brief.yaml>
+  pass_criteria:
+    - all required fields are present: problem_statement, business_goal, stakeholders
+    - at least one stakeholder has a name or role
+    - success_metric is not empty, or the reason it cannot be measured is in open_questions
+    - definition_of_done is not empty
+    - ready_for_spec can only be true when open_questions is empty (machine-checked gate)
+content_hash: 35819c5b1a4126d2fadc675de48a3e8e114b29e1c32ff277f732fd273065f679

@@ -1,0 +1,11 @@
+# Copy this file when running verify-change.
+task_id: ""
+commands:
+  - command: ""
+    exit_code: null            # required, must be an integer
+    duration_seconds: null
+acceptance_results:
+  - id: ""                     # must match an acceptance_criteria id in the task spec
+    result: ""                 # pass | fail
+ratchet_ref: ""                 # required if any acceptance_results has result: fail — id of the entry in .gft/ratchet-log.yaml (see skills/ratchet-log/SKILL.md)
+details_ref: ""                # optional — path to a .md file with more detail (not required, not checked by validate.sh)

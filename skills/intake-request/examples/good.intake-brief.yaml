@@ -1,0 +1,18 @@
+id: INTAKE-007
+problem_statement: "Users do not know when their order status changes. They have to keep checking the app themselves."
+business_goal: "Reduce the number of calls to support asking about order status."
+stakeholders:
+  - name: "Jane Smith"
+    role: "Product Owner, Customer Experience team"
+success_metric: "Reduce order-status support tickets by 30% within 1 month after launch."
+priority: must-have
+assumptions:
+  - "Users agree to receive email notifications (email marketing is already enabled in their profile)."
+out_of_scope:
+  - "SMS notifications (later stage)."
+open_questions: []
+definition_of_done:
+  - "The Product Owner has confirmed the 30% figure as the official target, not a rough estimate."
+  - "No open_question is still marked blocking."
+task_spec_ref: ""
+ready_for_spec: true

@@ -1,0 +1,15 @@
+id: testing-quality-gate
+version: 1.0.0
+description: Rules about the tests that must come with a change, used in every project no matter the tech stack. This rule adds to rules/evidence-requirements.yaml (evidence-requirements says how evidence must be recorded; this rule says when a test is required).
+severity: blocking
+applies_to: [agent, skill]
+statements:
+  - id: regression-test-required-for-bugfix
+    text: Every bug fix must come with at least one test that can reproduce the bug. This test must fail before the fix and pass after the fix. Without a test that reproduces the bug, the fix is not considered verified, as stated in rules/evidence-requirements.yaml.
+  - id: failing-test-before-new-behavior
+    text: For every NEW acceptance criterion that has a matching test-plan.yaml, the test for that case must be written and run first, and it must FAIL for the right reason — because the behavior does not exist yet, not because of a syntax or import error. Only after that should the code for that case be implemented. After implementing it, run the test again and it must PASS. This does not apply when the task has no test-plan.yaml (do not invent a case just to prove it yourself).
+  - id: no-lowering-coverage-to-pass
+    text: Do not lower the coverage threshold, skip a test, or mark a test as pending or ignored just to make CI pass. If a test is no longer valid, fix it or remove it on purpose, instead of disabling it silently (see rules/safety-invariants.yaml).
+  - id: new-public-surface-needs-tests
+    text: A new public function, API, or endpoint must have at least one happy-path test and one edge-case test (invalid input, or a boundary condition) before it is considered done.
+note: The qa-engineer is responsible for mapping each acceptance criterion to a test under this rule. The code-reviewer checks that no test was removed or weakened to get around this rule.

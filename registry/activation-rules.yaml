@@ -1,0 +1,43 @@
+# Maps each phase of the SDLC lifecycle to the agents and skills that must
+# be active in that phase. This is the only place that answers "who runs in
+# phase X" — do not copy this mapping table into each agent.md/SKILL.md file.
+# Those files only declare their own activation.phases in manifest.yaml, and
+# this file is what scripts/validate.sh uses to cross-check them.
+version: 1
+rules:
+  - id: intake-phase
+    when:
+      phase: intake
+    activate:
+      agents: [business-analyst]
+      skills: [intake-request]
+  - id: spec-phase
+    when:
+      phase: spec
+    activate:
+      agents: [solution-architect, business-analyst]
+      skills: [feature-roadmap, task-spec, impact-analysis, adr]
+  - id: plan-phase
+    when:
+      phase: plan
+    activate:
+      agents: [solution-architect]
+      skills: [plan-review, adr, test-plan]
+  - id: execute-phase
+    when:
+      phase: execute
+    activate:
+      agents: [developer]
+      skills: [systematic-debugging]
+  - id: verify-phase
+    when:
+      phase: verify
+    activate:
+      agents: [qa-engineer, security-reviewer]
+      skills: [verify-change, security-review, ratchet-log, systematic-debugging]
+  - id: review-phase
+    when:
+      phase: review
+    activate:
+      agents: [code-reviewer, security-reviewer]
+      skills: [review-change, pr-description, ratchet-log]

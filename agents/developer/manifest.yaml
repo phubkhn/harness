@@ -1,0 +1,19 @@
+id: developer
+type: agent
+version: 1.0.0
+owner: gft-harness
+description: 'Used to implement an approved task spec with a clear scope. Does not design architecture, and does not approve its own scope.'
+activation:
+  phases: [execute]
+authority: bounded-write
+allowed_tools: [read, search, write, shell]
+budgets:
+  max_turns: 20
+  max_recovery_attempts: 3
+verification:
+  method: script
+  command: scripts/validate.sh agent-output developer <path-to-output.md>
+  pass_criteria:
+    - lists the changed paths correctly
+    - every command has an exit code
+content_hash: 556f0b3061d8307d0a74ffcd4bea345e418090e498e5bf1bf020e799abe756b1

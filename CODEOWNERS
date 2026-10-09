@@ -1,0 +1,19 @@
+# Requires review for the protected paths in rules/protected-paths.yaml. Do NOT
+# hardcode a path here on its own, separate from that rule file — the list
+# below must be a 1-to-1 mirror of the `paths` field in
+# rules/protected-paths.yaml (this does not include `escalate_paths`, which
+# only needs runtime confirmation, not a required CODEOWNERS review).
+# `lint_codeowners()` in scripts/validate.py checks the reverse direction
+# every time `make validate` runs — if you edit a protected path, edit
+# protected-paths.yaml first, then add the matching line here; if one side is
+# missing, `make validate` fails.
+#
+# TODO: replace @gft-harness-maintainers with a real GitHub team/user once
+# this repo is hosted under a specific GitHub org.
+
+/rules/                        @gft-harness-maintainers
+/hooks/                        @gft-harness-maintainers
+/registry/                     @gft-harness-maintainers
+/.claude-plugin/               @gft-harness-maintainers
+agents/*/manifest.yaml         @gft-harness-maintainers
+skills/*/manifest.yaml         @gft-harness-maintainers

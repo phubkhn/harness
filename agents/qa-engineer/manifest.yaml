@@ -1,0 +1,18 @@
+id: qa-engineer
+type: agent
+version: 1.0.0
+owner: gft-harness
+description: 'Used to design acceptance criteria and tests, and to run and record verification evidence. Does not implement changes to production code.'
+activation:
+  phases: [verify]
+authority: read-only
+allowed_tools: [read, search, shell]
+budgets:
+  max_turns: 20
+verification:
+  method: script
+  command: scripts/validate.sh agent-output qa-engineer <path-to-output.md>
+  pass_criteria:
+    - every acceptance criterion has at least one mapped check
+    - every check has an exit code
+content_hash: 78ea0789c3cda72a2e013cff68544211e5e3f86b8a0eb4620c8f26dc58afb5e7

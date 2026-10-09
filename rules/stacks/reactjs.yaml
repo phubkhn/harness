@@ -1,0 +1,28 @@
+id: stack-reactjs
+version: 1.0.0
+description: Conventions used when a project uses ReactJS.
+severity: advisory
+applies_to: [agent, skill]
+applies_when:
+  paths:
+    - "**/package.json"
+  contains:
+    - path: "**/package.json"
+      pattern: "\"react\":"
+statements:
+  - id: hooks-over-classes
+    text: Prefer function components with hooks. Avoid writing new class components.
+  - id: no-any-props
+    text: Do not use the `any` type for props when the project uses TypeScript. Declare a clear interface or type instead.
+  - id: stable-list-keys
+    text: Every item in a rendered list (.map) must have a stable key prop. Do not use the index as the key when the list order can change.
+  - id: exhaustive-effect-deps
+    text: The dependency array of useEffect must be complete and correct. Do not disable the eslint-disable react-hooks/exhaustive-deps warning just to avoid it.
+  - id: error-boundary-for-risky-ui
+    text: Wrap an Error Boundary around UI parts that can fail at runtime (for example, rendering data from an external source), so one error does not crash the whole app.
+  - id: avoid-prop-drilling
+    text: Do not pass a prop through more than 2-3 component levels just to forward it. Use Context or a state management tool instead when needed.
+  - id: memoize-with-evidence
+    text: Only use React.memo/useMemo/useCallback when there is clear evidence that extra re-renders cause a performance problem. Do not optimize early without a reason.
+  - id: test-behavior-not-implementation
+    text: Write tests based on behavior the user can observe (Testing Library, render + interaction + assertion). Do not test a component's internal implementation details.

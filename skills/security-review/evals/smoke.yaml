@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet that executes this file (see skills/README.md).
+id: security-review-smoke
+skill: security-review
+scenario: "A diff adds a file upload endpoint with no limit on file type/size, and saves the path using a name the user supplies directly."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

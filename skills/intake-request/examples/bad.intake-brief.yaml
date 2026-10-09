@@ -1,0 +1,15 @@
+# expect_fail: definition_of_done is empty
+id: INTAKE-009
+problem_statement: "Business customers want to see a monthly financial report."
+business_goal: "Keep business customers by automating a report they currently make by hand."
+stakeholders:
+  - name: "Mary Johnson"
+    role: "Account Manager"
+success_metric: "Not measurable yet, needs more customer research."
+priority: should-have
+assumptions: []
+out_of_scope: []
+open_questions:
+  - "The report format customers want is unknown (PDF/Excel/dashboard)."
+definition_of_done: []
+task_spec_ref: ""

@@ -1,0 +1,19 @@
+id: impact-analysis
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Find the scope of impact of a change across several modules, services, or projects before writing a task-spec, together with downstream consumers and rollback options. Use this at the spec stage when a change may cross the boundary of a single repo or module. Do NOT use it for a change that clearly stays inside one module — skip it and write the task-spec directly.'
+activation:
+  phases: [spec]
+authority: proposal
+output:
+  artifact: impact-analysis.yaml
+  template: templates/impact-analysis.yaml
+  suggested_dir: docs/spec/  # suggestion (H-07 pilot) — not required, the project can override this in .gft/project.yaml
+verification:
+  method: script
+  command: scripts/validate.sh impact-analysis <path-to-filled-impact-analysis.yaml>
+  pass_criteria:
+    - affected_components is not empty, each component has a valid impact and a reason
+    - risk_tier is not empty
+content_hash: e059ab3e09565fcc590b29008f44d767d304dab986b380848b5330dd3ec1db4b

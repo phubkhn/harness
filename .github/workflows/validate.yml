@@ -1,0 +1,25 @@
+name: validate
+
+# CI is the final authority before merge — the local hook
+# (hooks/check-protected-paths.sh) only gives fast feedback within a session,
+# it cannot replace this check (see rules/context-hierarchy.yaml and
+# GUIDELINE.md). After adding this workflow, go to Settings > Branches >
+# the branch protection rule for main and turn on "Require status checks to
+# pass" -> pick the "validate" check (the job id below) as required — this
+# step cannot be done through a file, it must be turned on by hand on
+# GitHub.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: make validate
+        run: make validate

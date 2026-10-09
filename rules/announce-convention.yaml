@@ -1,0 +1,15 @@
+id: announce-convention
+version: 1.0.0
+description: Every skill or agent must announce itself when it starts running, so the user always knows which step the agent is on — even when the skill or agent is called directly, without going through the using-gft router.
+severity: advisory
+applies_to: [agent, skill]
+format: 'Using `<skill-or-agent-id>` to <short purpose>.'
+statements:
+  - id: announce-before-start
+    text: Before doing the first step of '## Process', print exactly one line in the 'format' above, then start. Do not merge it into another reply, and do not skip it even when the skill or agent is called directly.
+  - id: announce-on-chain
+    text: If a skill or agent calls another skill or agent while it runs (for example, developer runs verify-change at step 5), announce the new id again before switching. One announcement at the start is not enough for the whole chain.
+  - id: announce-not-artifact
+    text: The announcement is one line of text in the conversation. It is not a field in an artifact or output. Do not add an 'announce' field to any template.
+  - id: announce-correct-id
+    text: "'<skill-or-agent-id>' must be an id registered in registry/capability-catalog.yaml (for example 'developer', 'code-reviewer'). Three things must NOT be used instead of the id, even though they look similar: (1) a phase name ('intake'/'spec'/'plan'/'execute'/'verify'/'review') — that is the value of when.phase in registry/activation-rules.yaml, not an id; take the id from that rule's activate.agents/activate.skills instead; (2) the technical subagent_type that Claude Code uses when it dispatches through the Task tool (in the form 'gft:<agent>:<agent>') — that is Claude Code's own internal name, not the harness id; (3) the id of the skill or agent that is doing the routing itself (for example, using-gft does not announce its own id when it is introducing another agent or skill)."

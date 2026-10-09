@@ -1,0 +1,15 @@
+task_id: TASK-042
+commands:
+  - command: "npm test -- notification.spec.ts"
+    exit_code: 0
+    duration_seconds: 8
+  - command: "npm run lint -- src/notification"
+    exit_code: 0
+    duration_seconds: 3
+acceptance_results:
+  - id: AC-1
+    result: pass
+  - id: AC-2
+    result: pass
+ratchet_ref: ""
+details_ref: ""

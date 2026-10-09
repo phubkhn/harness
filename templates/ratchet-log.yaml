@@ -1,0 +1,16 @@
+# Copy this file as .gft/ratchet-log.yaml IN THE PROJECT THAT USES THE HARNESS
+# (not in this harness repo) — at the same level as .gft/project.yaml. One entry
+# for each failure found in the verify/review phase, to turn a failure into
+# institutional memory instead of just retrying until it passes (see
+# skills/ratchet-log/SKILL.md, wiki/foundations/failure-modes.md).
+entries:
+  - id: ""                   # e.g.: RATCHET-001 — keep it stable, so verification-result/review-result can point to it with field ratchet_ref
+    task_id: ""
+    date: ""                 # YYYY-MM-DD
+    phase: ""                # verify | review
+    failure_class: ""        # scope-creep | invisible-deletion | context-window | prompt-satisfaction | hallucination | consistency | other
+    description: ""
+    root_cause: ""
+    control_added: ""        # reference to the SPECIFIC rule/hook/regression-test added (or to be added) to stop this repeating — required, must not be empty if status is not 'open'
+    status: open              # open | regression-added | closed
+    owner: ""

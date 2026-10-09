@@ -1,0 +1,17 @@
+id: error-handling
+version: 1.0.0
+description: General rules about error handling, used in every project no matter the tech stack.
+severity: blocking
+applies_to: [agent, skill]
+statements:
+  - id: no-silent-catch
+    text: Do not catch an exception or error and then ignore it without logging it or re-throwing it. An empty catch block, or a catch that only swallows the error to return a default value, is never acceptable.
+  - id: fail-fast-at-boundary
+    text: Validate input right at the boundary (API handler, CLI entry point, queue consumer, form submit) and reject bad input early. Do not let invalid data travel deep into the business logic and then fail at an unrelated layer.
+  - id: consistent-error-shape
+    text: Errors returned to the caller or client must follow one consistent schema across the whole project (for example code, message, traceId). Do not mix different error formats between endpoints or modules.
+  - id: no-swallowed-async-errors
+    text: Every Promise, async call, or background task must have clear error handling (catch, try-catch, or an explicit propagation to the caller). Do not let an async operation fail silently with no one aware of it.
+  - id: no-exception-for-control-flow
+    text: Do not use exceptions to control normal logic flow (for example, using try/catch instead of if/else on a branch that is expected to happen often). Exceptions are for situations that are not expected to happen.
+note: Breaking this rule is usually a major or blocker finding during review, because a swallowed or uncontrolled error is a common cause of bugs that are hard to debug and of production incidents.

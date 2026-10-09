@@ -1,0 +1,7 @@
+# Copy this file when running pr-description, after review-change already has a verdict.
+task_id: ""                    # id of the task-spec — required for tracing
+summary: ""                    # one sentence: what this PR does
+changed_paths: []              # must match the changed paths that were verified, nothing added or removed
+verification_ref: ""           # path to the verification-result.yaml that passed
+review_ref: ""                 # path to the review-result.yaml (verdict approve)
+breaking_change: null          # true | false

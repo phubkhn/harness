@@ -1,0 +1,13 @@
+# expect_fail: lists no downside yet (cons)
+id: ADR-002
+title: "Choose a logging library"
+status: proposed
+context: "We need to standardize logging for the new service."
+options:
+  - name: "Use the existing internal logging library"
+    pros: ["Already available, no need to learn something new", "Compatible with the current observability setup"]
+    cons: []
+decision: "Use the internal logging library."
+consequences: ["No change needed to the observability infrastructure."]
+superseded_by: ""
+details_ref: ""

@@ -1,0 +1,11 @@
+# expect_fail: 'ratchet_ref' is missing
+task_id: TASK-051
+commands:
+  - command: "npm test -- payment.spec.ts"
+    exit_code: 1
+    duration_seconds: 5
+acceptance_results:
+  - id: AC-1
+    result: fail
+ratchet_ref: ""
+details_ref: ""

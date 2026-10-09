@@ -1,0 +1,26 @@
+id: stack-dotnet
+version: 1.0.0
+description: Conventions used when a project uses .NET.
+severity: advisory
+applies_to: [agent, skill]
+applies_when:
+  paths:
+    - "**/*.csproj"
+    - "**/*.sln"
+statements:
+  - id: async-all-the-way
+    text: Use async/await through the whole call chain when there is I/O. Do not block with .Result or .Wait().
+  - id: di-via-constructor
+    text: Use dependency injection through the constructor, and register services through the DI container. Do not create a dependency directly with `new`.
+  - id: dispose-idisposable
+    text: Make sure IDisposable objects are disposed correctly (using statement), especially DbContext and HttpClient.
+  - id: config-via-ioptions
+    text: Read configuration through IOptions<T>/appsettings.json. Do not hardcode a connection string or secret in code.
+  - id: centralized-exception-middleware
+    text: Handle exceptions in one central place through middleware (UseExceptionHandler/UseExceptionMiddleware). Do not use try/catch that swallows errors in each controller.
+  - id: structured-logging-via-ilogger
+    text: Log through ILogger<T> received from DI. Do not use Console.WriteLine in production code.
+  - id: avoid-n-plus-one-ef
+    text: Watch out for N+1 queries in EF Core. Use Include()/ThenInclude() where it makes sense, and use AsNoTracking() for read-only queries.
+  - id: separate-unit-integration-tests
+    text: Keep unit tests (xUnit/NUnit + Moq) clearly separate from integration tests. A unit test must not depend on a real database or network.

@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet to run this file (see skills/README.md).
+id: pr-description-smoke
+skill: pr-description
+scenario: "task-spec TASK-042 has passed verify and has an approve review verdict. We need to generate a PR description to open a real PR on GitHub."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

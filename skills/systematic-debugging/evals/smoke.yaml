@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet that executes this file (see skills/README.md).
+id: systematic-debugging-smoke
+skill: systematic-debugging
+scenario: "The developer is at step 4 (implement). A newly written test fails with a stack trace that has no clear cause yet. One fix was already tried, and running it again still fails, for a different reason."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

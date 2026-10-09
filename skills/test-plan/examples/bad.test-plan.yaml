@@ -1,0 +1,9 @@
+# expect_fail: needs at least one case with covers_negative_path: true
+task_id: TASK-051
+cases:
+  - id: TC-1
+    acceptance_criteria_ref: AC-1
+    kind: unit
+    description: "The endpoint returns the correct data for the logged-in user."
+    covers_negative_path: false
+open_questions: []

@@ -1,0 +1,17 @@
+id: ADR-001
+title: "Rate limit for a public API endpoint"
+status: accepted
+context: "The /public/search endpoint gets too many calls from some clients. We need to block some traffic without affecting valid clients. Deadline: before next week's peak period."
+options:
+  - name: "Rate limit at the API gateway (by IP + API key)"
+    pros: ["No change to service code", "Applies the same way to every endpoint"]
+    cons: ["Cannot tell apart valid requests that come from a shared IP (NAT)"]
+  - name: "Rate limit inside the service code (by user id)"
+    pros: ["Accurate, based on the real user"]
+    cons: ["Needs code changes and a new service deploy. Will not meet next week's deadline"]
+decision: "Choose rate limit at the API gateway because the deadline is tight. Accept the NAT risk and review it again later."
+consequences:
+  - "Some clients that share one IP (NAT) may get rate-limited by mistake. We need a manual whitelist channel."
+  - "We need a follow-up ADR to switch to rate limit by user id when there is time."
+superseded_by: ""
+details_ref: ""

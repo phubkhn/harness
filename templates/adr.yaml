@@ -1,0 +1,13 @@
+# Copy this file for an architecture decision that is important, controversial, or hard to reverse.
+id: ADR-001
+title: ""
+status: proposed             # proposed | accepted | superseded
+context: ""                  # the problem and the constraints
+options:
+  - name: ""
+    pros: []
+    cons: []                 # required: at least one concrete downside for each option
+decision: ""                 # which option was chosen, and the constraint that decided it
+consequences: []
+superseded_by: ""            # id of another ADR, if status is superseded
+details_ref: ""              # optional — path to a .md file with more detail (not required, not checked by validate.sh)

@@ -1,0 +1,9 @@
+# Scaffold: no eval runner executes this file yet (see agents/README.md).
+id: code-reviewer-smoke
+agent: code-reviewer
+scenario: "A diff that already passed verify-change, needing an independent review before it is applied, which has one finding with minor severity."
+expected:
+  schema_valid: true
+  policy_violations: 0
+  terminal_state: success-or-escalated
+status: scaffold-only

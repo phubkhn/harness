@@ -1,0 +1,16 @@
+id: safety-invariants
+version: 1.0.0
+description: The invariants that cannot be negotiated, used by every agent and skill in this harness.
+severity: blocking
+applies_to: [agent, skill, hook]
+statements:
+  - id: proposal-until-accepted
+    text: The model's output is only a proposal until an independent, deterministic check accepts it.
+  - id: protected-overrides-allowed
+    text: A protected scope always has priority over an allowed scope, even when the task spec says something different.
+  - id: no-self-edit
+    text: An agent must never edit its own task spec, its acceptance criteria, or the rule or hook that governs it.
+  - id: deny-unknown-by-default
+    text: An unknown tool, path, or command is denied by default. It must never be allowed silently.
+  - id: no-done-without-evidence
+    text: No task can be marked done without independent, verified evidence (see evidence-requirements.yaml).

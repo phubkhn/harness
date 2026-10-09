@@ -1,0 +1,28 @@
+# Copy this file when running plan-review.
+task_id: ""
+findings:
+  - step: ""                   # the step/line in the plan that this finding applies to
+    summary: ""
+verdict: ""                    # approved | changes-requested | escalate — findings are required if verdict is changes-requested or escalate
+details_ref: ""                # optional — path to a .md file with more detail (not required, not checked by validate.sh)
+
+# REQUIRED when verdict: approved (H-04 pilot) — a snapshot of the task-spec at the exact
+# moment of approval, so verify/review can later detect if someone (even the
+# developer itself, even with permission) changed the task-spec without a scope-amendment.
+# Compute it with: scripts/hash_manifest.py compute <task_spec_ref>
+task_spec_ref: ""               # path to the task-spec.yaml that was reviewed (required if verdict: approved)
+task_spec_hash: ""              # sha256 of task-spec.yaml at the moment of approval (required if verdict: approved)
+
+# Optional (H-03 pilot) — if the plan had to be fixed and reviewed again over several rounds
+# before it was approved, record EACH round here instead of just describing it in prose
+# inside a free .md file that validate.sh does not check. The `verdict`/`findings` at
+# the top of the file MUST always match the last round in this list — if you
+# do not use several rounds, leave rounds empty; it is not required.
+rounds: []
+# rounds:
+#   - round_no: 1
+#     at: "2026-09-17"
+#     verdict: changes-requested
+#     findings:
+#       - step: ""
+#         summary: ""

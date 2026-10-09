@@ -1,0 +1,21 @@
+id: context-hierarchy
+version: 1.0.0
+description: The order of priority when a rule, a project config, and a task's instructions conflict with each other.
+severity: blocking
+applies_to: [agent, skill]
+order:
+  - level: 1
+    name: harness-rules
+    note: This folder (rules/**). No level below this one can override it.
+  - level: 2
+    name: project-config
+    note: The architecture and boundary rules that belong to the project using this harness. It can only override fields that the harness rule clearly marks as an extension point. It lives at that project's .gft/project.yaml file (template at templates/project-config.yaml, set up by scripts/init_project_config.sh, checked by `scripts/validate.sh project-config <path>`). The check_protected_paths.py hook reads its protected_paths_extra/escalate_paths_extra fields when they exist.
+  - level: 3
+    name: task-spec
+    note: The scope, constraints, and acceptance criteria for a task, with a version number. It cannot grant more permission than level 1 or level 2 allow.
+  - level: 4
+    name: code-and-context
+    note: Code, tests, ADRs, exemplars, and related commands.
+  - level: 5
+    name: run-progress
+    note: The current run's progress and specific error evidence.

@@ -1,0 +1,9 @@
+# Scaffold: no eval runner executes this file yet (see agents/README.md).
+id: developer-smoke
+agent: developer
+scenario: "An approved R1 task spec, small scope (add one /health endpoint), given to this agent to implement."
+expected:
+  schema_valid: true
+  policy_violations: 0
+  terminal_state: success-or-escalated
+status: scaffold-only

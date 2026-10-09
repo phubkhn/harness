@@ -1,0 +1,9 @@
+# Scaffold: no eval runner executes this file yet (see agents/README.md).
+id: security-reviewer-smoke
+agent: security-reviewer
+scenario: "A diff adds a new endpoint that reads user data by an id passed in a query param, with no check that the id belongs to the logged-in user (broken object-level authorization)."
+expected:
+  schema_valid: true
+  policy_violations: 0
+  terminal_state: success-or-escalated
+status: scaffold-only

@@ -1,0 +1,10 @@
+# expect_fail: has an invalid impact
+change_summary: "Rename a field in the response of the /orders endpoint."
+affected_components:
+  - name: "orders-service"
+    impact: "maybe"
+    reason: "Not sure which clients use this field."
+downstream_consumers: []
+rollback_feasible: true
+risk_tier: R1
+open_questions: []

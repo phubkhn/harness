@@ -1,0 +1,5 @@
+# expect_fail: requires at least one finding
+task_id: TASK-051
+findings: []
+verdict: changes-requested
+details_ref: ""

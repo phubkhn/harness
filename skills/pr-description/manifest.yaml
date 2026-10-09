@@ -1,0 +1,19 @@
+id: pr-description
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Generate a PR description with traceability to the task-spec id, the changed scope, and the verify/review result. Use this at the review stage, after review-change has given an approve verdict. Do NOT use it when verify or review has not passed yet — pr-description only records a result that is already achieved. It is not a place to "ask for" a verdict.'
+activation:
+  phases: [review]
+authority: proposal
+output:
+  artifact: pr-description.yaml
+  template: templates/pr-description.yaml
+  suggested_dir: docs/review/  # suggestion (H-07 pilot) — not required, the project can override this in .gft/project.yaml
+verification:
+  method: script
+  command: scripts/validate.sh pr-description <path-to-filled-pr-description.yaml>
+  pass_criteria:
+    - task_id, changed_paths, verification_ref, review_ref are not empty
+    - breaking_change is true or false
+content_hash: 75b72eeed90407c09d69bff1e5e4c5f3f802de863b788d56cc3f067bc9529fd0

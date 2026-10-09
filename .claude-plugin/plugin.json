@@ -1,0 +1,8 @@
+{
+  "name": "gft",
+  "version": "0.2.0",
+  "description": "An AI-SDLC harness for GFT: role-based agents, reusable skills, enforceable rules, templates, and hooks for Claude Code.",
+  "author": {
+    "name": "dirak"
+  }
+}

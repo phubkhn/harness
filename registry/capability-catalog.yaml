@@ -1,0 +1,27 @@
+# This is the single source of truth for which agents and skills exist.
+# scripts/validate.sh cross-checks this list against the real agents/*/ and
+# skills/*/ folders, in both directions: nothing in this list can be missing
+# from disk, and nothing on disk can be missing from this list.
+version: 1
+agents:
+  - solution-architect
+  - developer
+  - qa-engineer
+  - code-reviewer
+  - security-reviewer
+  - business-analyst
+skills:
+  - task-spec
+  - plan-review
+  - verify-change
+  - review-change
+  - adr
+  - security-review
+  - test-plan
+  - impact-analysis
+  - pr-description
+  - intake-request
+  - ratchet-log
+  - feature-roadmap
+  - using-gft
+  - systematic-debugging

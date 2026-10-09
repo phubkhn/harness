@@ -1,0 +1,17 @@
+id: security-baseline
+version: 1.0.0
+description: The minimum security rules, used in every project no matter the tech stack. This is the source of truth for the security check steps in agents/security-reviewer and skills/security-review — those two places only reference this file, they do not repeat its content.
+severity: blocking
+applies_to: [agent, skill]
+statements:
+  - id: no-hardcoded-secrets
+    text: Do not hardcode an API key, password, token, connection string, or any other credential in code or in a file committed to the repo. Secrets must only come from environment variables or a secret manager.
+  - id: no-sensitive-data-in-logs
+    text: Do not log PII, passwords, tokens, or other sensitive data. Mask it or remove it before writing it to a log.
+  - id: input-sanitization-at-boundary
+    text: Every input from outside (request body/query, file upload, message queue, user input) must be validated and sanitized at the boundary before it is used to build a query, command, path, or HTML output. This prevents injection attacks (SQL, command, path traversal, XSS, SSRF).
+  - id: pinned-dependencies
+    text: A dependency used in production should not declare a vague version range (for example `*` or `latest`) without a lockfile. This avoids letting a malicious patch or a breaking change slip into an automatic build.
+  - id: no-disabling-security-check-without-record
+    text: Do not turn off an existing security mechanism (skipping TLS verification, disabling CSRF protection, using `--no-verify`, commenting out an access-control check...) without a clear note in an ADR or task spec that explains the reason and the scope.
+note: This rule sits at the harness-rules level in rules/context-hierarchy.yaml. No project config or task spec can relax it without an ADR that clearly states who accepted the risk.

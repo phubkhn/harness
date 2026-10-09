@@ -1,0 +1,12 @@
+{
+  "name": "gft-harness",
+  "owner": {
+    "name": "dirak"
+  },
+  "plugins": [
+    {
+      "name": "gft",
+      "source": "."
+    }
+  ]
+}

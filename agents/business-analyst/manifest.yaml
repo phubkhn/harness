@@ -1,0 +1,18 @@
+id: business-analyst
+type: agent
+version: 1.0.0
+owner: gft-harness
+description: 'Used to elicit and clarify a raw request/ticket before writing a task-spec — to find the business goal, stakeholder, success metric, and open questions. Not used to decide architecture or a technical solution; that goes to solution-architect.'
+activation:
+  phases: [intake, spec]
+authority: proposal
+allowed_tools: [read, search, shell]
+budgets:
+  max_turns: 20
+verification:
+  method: script
+  command: scripts/validate.sh agent-output business-analyst <path-to-output.md>
+  pass_criteria:
+    - at least one stakeholder is named clearly
+    - every assumption is listed clearly, not hidden in general text
+content_hash: 3fa90229e6dedd15e969ab2ba472121eddf1b01b606b4ce6477210192ed68ce9

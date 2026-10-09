@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet to run this file (see skills/README.md).
+id: adr-smoke
+skill: adr
+scenario: "Choose between syncing data with scheduled polling or with event streaming, when 5 services need near-real-time data."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

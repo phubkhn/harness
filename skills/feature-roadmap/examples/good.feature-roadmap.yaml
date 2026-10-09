@@ -1,0 +1,18 @@
+id: ROADMAP-001
+feature_ref: "INTAKE-007"
+outcome: "A notification system that supports email and in-app messages, with retry and a per-user on/off setting."
+open_questions_resolved: true
+split_decision: staged
+stages:
+  - stage_no: 1
+    task_ref: "TASK-042"
+    scope_summary: "Send notifications by email only, no retry, no on/off UI."
+    risk_tier: R1
+    depends_on: []
+    rationale: "We need a minimal version running first, to measure the real send success rate."
+  - stage_no: 2
+    task_ref: ""
+    scope_summary: "Add retry for failed emails and a UI for the user to turn notifications on or off."
+    risk_tier: R2
+    depends_on: [1]
+    rationale: "Depends on the email send queue being stable after stage 1."

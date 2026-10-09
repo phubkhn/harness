@@ -1,0 +1,9 @@
+task_id: TASK-042
+findings:
+  - severity: minor
+    file: "api/users/handler.go"
+    line: 40
+    summary: "Should log the userID instead of the email in the audit log, to reduce PII leaking into logs."
+verdict: approve
+ratchet_ref: ""
+details_ref: ""

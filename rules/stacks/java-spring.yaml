@@ -1,0 +1,31 @@
+id: stack-java-spring
+version: 1.0.0
+description: Conventions used when a project uses Java + Spring.
+severity: advisory
+applies_to: [agent, skill]
+applies_when:
+  paths:
+    - "**/pom.xml"
+    - "**/build.gradle"
+    - "**/build.gradle.kts"
+statements:
+  - id: constructor-injection
+    text: Prefer constructor injection over field injection (@Autowired on a field) in a Spring bean.
+  - id: no-business-logic-in-controller
+    text: A controller should only handle the request and response. It must not contain business logic — that logic belongs in the service layer.
+  - id: optional-over-null
+    text: Return Optional<T> instead of null for a service or repository method that may have no result.
+  - id: transactional-at-service-layer
+    text: "Put @Transactional at the service layer, not at the repository or controller layer."
+  - id: bean-validation-at-boundary
+    text: Validate input with Bean Validation (@Valid, @NotNull, @Size...) at the DTO/request layer. Do not write manual validation scattered inside the service.
+  - id: centralized-exception-handling
+    text: Handle exceptions in one central place with @ControllerAdvice/@ExceptionHandler. Do not use try/catch that swallows the error and returns null or a default value.
+  - id: structured-logging
+    text: Log through an SLF4J logger instance (Logger LOG = LoggerFactory.getLogger(...)). Do not use System.out.println/e.printStackTrace.
+  - id: avoid-n-plus-one
+    text: Watch out for lazy loading in JPA causing N+1 queries. Use a fetch join or @EntityGraph when a query needs related data.
+  - id: config-not-hardcoded
+    text: Declare configuration (endpoint, timeout, feature flag...) through application.yml/properties + @ConfigurationProperties. Do not hardcode literal values in code.
+  - id: unit-test-isolation
+    text: Use JUnit5 + Mockito for unit tests, and mock dependencies instead of loading the whole Spring context. Use @SpringBootTest only for integration tests.

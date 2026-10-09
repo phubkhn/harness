@@ -1,0 +1,10 @@
+# expect_fail: verdict is 'blocker' but 'ratchet_ref' is missing
+task_id: TASK-051
+findings:
+  - severity: blocker
+    file: "auth/login.go"
+    line: 21
+    summary: "The password is compared with == instead of a constant-time compare function, which can allow a timing attack."
+verdict: blocker
+ratchet_ref: ""
+details_ref: ""

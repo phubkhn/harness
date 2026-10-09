@@ -1,0 +1,11 @@
+# Copy this file when running impact-analysis, before writing a task-spec for a change
+# that touches several modules/services/projects.
+change_summary: ""
+affected_components:
+  - name: ""                   # name of the module/service/repo
+    impact: ""                 # breaking | behavior-change | none — the real level of impact
+    reason: ""                 # why this component is affected
+downstream_consumers: []       # who/which team/service calls into the changed part, needs to know before merge
+rollback_feasible: null        # true | false — can this change be rolled back, and why
+risk_tier: ""                  # R0-R4, see rules/context-hierarchy.yaml
+open_questions: []

@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet to run this file (see skills/README.md).
+id: impact-analysis-smoke
+skill: impact-analysis
+scenario: "Change the format of a Kafka event that 3 other services consume, to add a new field."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

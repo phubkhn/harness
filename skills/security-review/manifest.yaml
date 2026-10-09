@@ -1,0 +1,20 @@
+id: security-review
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Does an independent, read-only security review of a diff — authn/authz, input validation, secrets, sensitive data. Use this at verify, in parallel with or after review-change, especially when the diff touches escalate_paths in rules/protected-paths.yaml. Does NOT replace `review-change` — security-review only looks at security, not scope/convention/architecture.'
+activation:
+  phases: [verify]
+authority: read-only
+output:
+  artifact: review-result.yaml
+  template: templates/review-result.yaml
+  suggested_dir: docs/verify/  # suggestion (H-07 pilot) — not required, a project can override this through .gft/project.yaml
+verification:
+  method: script
+  command: scripts/validate.sh review-change <path-to-filled-review-result.yaml>
+  pass_criteria:
+    - each finding has a file reference
+    - verdict is blocker if there is any finding with severity blocker
+    - when verdict is blocker, ratchet_ref must not be empty
+content_hash: da4e1313a50b2469d3a9aeb699c7bacb6c7ce4e96a3370d25a16606918b34375

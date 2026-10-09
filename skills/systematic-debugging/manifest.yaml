@@ -1,0 +1,17 @@
+id: systematic-debugging
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: "Use this when implementing or verifying hits an error/test failure with no clear cause right away — investigate the root cause in a systematic way before trying a fix, instead of guessing one attempt at a time."
+activation:
+  phases: [execute, verify]
+authority: proposal
+output:
+  artifact: null  # no artifact produced — the result goes into the report of the developer/qa-engineer that calls this skill
+verification:
+  method: script
+  command: scripts/validate.sh
+  pass_criteria:
+    - the final fix has a regression test, checked by rules/testing-quality-gate.yaml through verify-change
+    - the root cause/fix report in the output of the agent that calls this skill follows rules/evidence-requirements.yaml (not just "it's fixed now")
+content_hash: 68f823c432089ddaf8b71ca17169bdadbbf33c8b382459c6c7237beb83046538

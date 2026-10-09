@@ -1,0 +1,27 @@
+# Copy this file to start making a raw request clear. Fill in every field; do not delete a field
+# you left empty on purpose. When it is clear enough (no open question is blocking), move to templates/task-spec.yaml.
+id: INTAKE-001
+problem_statement: ""         # one sentence: what problem does this raw request want to solve?
+business_goal: ""             # the business problem/opportunity, separate from a specific technical solution
+stakeholders:
+  - name: ""                  # who needs this / who can approve scope, priority
+    role: ""
+success_metric: ""            # must be measurable; if not, leave empty and write the reason in open_questions
+priority: ""                  # e.g.: must-have | should-have | could-have | won't-have
+assumptions:
+  - ""                        # a clear assumption, not hidden inside general text
+out_of_scope:
+  - ""
+open_questions:
+  - ""                        # any unclear point that could change the outcome/scope — do not guess instead
+definition_of_done:
+  - ""                        # a SPECIFIC, checkable condition that shows this brief is "done" and ready
+                               # to move to /gft:spec — not just a repeat of "it is clear now".
+                               # e.g.: "stakeholder X confirmed success_metric with a real number",
+                               # "no open_question is marked blocking anymore"
+task_spec_ref: ""             # optional — id of the task-spec made from this intake brief, fill in later
+ready_for_spec: false         # change to true ONLY WHEN open_questions is empty — this is a real gate,
+                               # validate.sh will FAIL if this is true but open_questions still has an item (see H-01
+                               # in the pilot: before, definition_of_done was only checked for "not empty",
+                               # not checked against open_questions, so an unfinished brief still "PASSED"
+                               # and could move on to /gft:spec). Leave as false/empty if the brief is still WIP.

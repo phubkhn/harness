@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet to run this file (see skills/README.md).
+id: intake-request-smoke
+skill: intake-request
+scenario: "Rough ticket: 'customers complain that checkout is slow, needs improvement' — no numbers yet, and unclear which stakeholder sets the priority."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

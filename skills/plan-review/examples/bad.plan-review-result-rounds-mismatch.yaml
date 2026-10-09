@@ -1,0 +1,14 @@
+# expect_fail: does not match the verdict of the last round
+task_id: TASK-042
+findings: []
+verdict: approved
+details_ref: ""
+task_spec_ref: skills/task-spec/examples/good.task-spec.yaml
+task_spec_hash: 96d0e05e69a5a25fd0fa64bbf37644d325c57fe5691692725987600052a5a606
+rounds:
+  - round_no: 1
+    at: "2026-09-17"
+    verdict: changes-requested
+    findings:
+      - step: "step 2"
+        summary: "The rate limit key is not clear — by API key or by IP."

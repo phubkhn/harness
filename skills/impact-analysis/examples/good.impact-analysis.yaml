@@ -1,0 +1,14 @@
+change_summary: "Change the API gateway's error response format to follow the RFC 7807 standard."
+affected_components:
+  - name: "api-gateway"
+    impact: breaking
+    reason: "Directly changes the shape of the error response that the client parses."
+  - name: "billing-service"
+    impact: behavior-change
+    reason: "Reads the error response through the gateway indirectly to retry. Its parse logic needs an update."
+downstream_consumers:
+  - "mobile team (app still parses the old error.message field)"
+  - "billing-service"
+rollback_feasible: true
+risk_tier: R2
+open_questions: []

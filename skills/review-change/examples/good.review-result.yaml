@@ -1,0 +1,9 @@
+task_id: TASK-042
+findings:
+  - severity: minor
+    file: "gateway/config/rate-limit.yaml"
+    line: 12
+    summary: "Should add a comment explaining where the burst=20 value comes from."
+verdict: approve
+ratchet_ref: ""
+details_ref: ""

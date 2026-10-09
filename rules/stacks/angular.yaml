@@ -1,0 +1,25 @@
+id: stack-angular
+version: 1.0.0
+description: Conventions used when a project uses Angular.
+severity: advisory
+applies_to: [agent, skill]
+applies_when:
+  paths:
+    - "**/angular.json"
+statements:
+  - id: di-via-constructor
+    text: Use dependency injection through the constructor. Do not use injector.get() freely inside a component.
+  - id: unsubscribe-observables
+    text: Unsubscribe from an Observable the right way (async pipe or takeUntil) to avoid a memory leak.
+  - id: onpush-when-possible
+    text: Prefer ChangeDetectionStrategy.OnPush for a component that does not need the default change detection.
+  - id: reactive-forms-for-complex-forms
+    text: Prefer Reactive Forms over Template-driven Forms for a form with complex or dynamic validation logic.
+  - id: consistent-module-style
+    text: Keep one consistent organization style across the whole project — either NgModule or standalone components. Do not mix them freely.
+  - id: lazy-load-feature-routes
+    text: A feature module's routes should be lazy-loaded (loadChildren/loadComponent) to reduce the initial bundle size.
+  - id: immutable-input-updates
+    text: Do not mutate an object or array received through @Input directly. Create a copy when you need to change it, so change detection works correctly.
+  - id: unsubscribe-in-ondestroy
+    text: For a subscription that does not use the async pipe, you must unsubscribe in ngOnDestroy (or use takeUntilDestroyed). Do not let it leak when the component is destroyed.

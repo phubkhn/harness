@@ -1,0 +1,19 @@
+# expect_fail: open_questions_resolved is not yet true
+id: ROADMAP-002
+feature_ref: "INTAKE-009"
+outcome: "A monthly financial report system for business customers."
+open_questions_resolved: false
+split_decision: staged
+stages:
+  - stage_no: 1
+    task_ref: ""
+    scope_summary: "Generate a basic PDF report."
+    risk_tier: R1
+    depends_on: []
+    rationale: "A minimal version first."
+  - stage_no: 2
+    task_ref: ""
+    scope_summary: "Add automatic report sending by email."
+    risk_tier: R2
+    depends_on: [1]
+    rationale: "Depends on the PDF report being stable."

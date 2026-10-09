@@ -1,0 +1,8 @@
+task_id: TASK-042
+summary: "Add rate limit by IP and API key for the /public/search endpoint."
+changed_paths:
+  - "gateway/config/rate-limit.yaml"
+  - "gateway/tests/rate_limit_test.go"
+verification_ref: "verification-result-TASK-042.yaml"
+review_ref: "review-result-TASK-042.yaml"
+breaking_change: false

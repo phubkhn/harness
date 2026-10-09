@@ -1,0 +1,17 @@
+# expect_fail: ready_for_spec=true but open_questions still has
+id: INTAKE-010
+problem_statement: "Employees want to book meeting rooms directly instead of through chat."
+business_goal: "Remove double-booked meeting rooms made through chat."
+stakeholders:
+  - name: "Operations Manager"
+    role: "Requester, sets scope"
+success_metric: "Reduce double bookings to 0 within 1 month."
+priority: must-have
+assumptions: []
+out_of_scope: []
+open_questions:
+  - "The login method is not decided yet (SSO or a separate account)."
+definition_of_done:
+  - "The login method has been decided."
+task_spec_ref: ""
+ready_for_spec: true

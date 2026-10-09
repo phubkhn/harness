@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet that executes this file (see skills/README.md).
+id: test-plan-smoke
+skill: test-plan
+scenario: "A task-spec has AC-1 (a successful login returns a token) and AC-2 (5 wrong passwords locks the account for 15 minutes)."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

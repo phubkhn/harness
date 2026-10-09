@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# SubagentStop hook: compares the tools frontmatter of agent.md with
+# allowed_tools in manifest.yaml when a subagent ends.
+set -euo pipefail
+
+HOOK_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+exec python3 "$HOOK_DIR/check_agent_manifest.py"

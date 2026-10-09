@@ -1,0 +1,13 @@
+id: observability
+version: 1.0.0
+description: General observability conventions (logging and metrics), used in every project no matter the tech stack.
+severity: advisory
+applies_to: [agent, skill]
+statements:
+  - id: log-external-calls
+    text: Every call that leaves the current process (HTTP call, DB query, message queue, cache) should have a log or metric that records the result and the time it took, at least on the error path.
+  - id: structured-logging
+    text: Logs should be structured (key-value or JSON), with a correlation or trace id when one exists, instead of free-text sentences that cannot be queried or filtered.
+  - id: no-print-debug-in-production
+    text: Do not use `print`/`console.log` or similar functions to log in production code. Use a logger with levels (debug/info/warn/error) so logs can be turned on or off and filtered by environment.
+note: This rule is advisory, not blocking — missing observability does not break a function right away, but it raises the cost of debugging and the MTTR when something goes wrong. Report it as a minor or major finding during review, not as a blocker, unless the project already has an SLA or on-call process that depends on that log.

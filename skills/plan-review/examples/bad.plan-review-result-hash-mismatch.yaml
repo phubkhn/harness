@@ -1,0 +1,7 @@
+# expect_fail: suspected self-edit of the task-spec
+task_id: TASK-042
+findings: []
+verdict: approved
+details_ref: ""
+task_spec_ref: skills/task-spec/examples/good.task-spec.yaml
+task_spec_hash: "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"

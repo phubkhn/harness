@@ -1,0 +1,18 @@
+id: ratchet-log
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Write an entry into the ratchet-log of the project when verify-change or review-change/security-review finds a failure (a failed acceptance criterion, or a blocker verdict) — turn a failure into institutional memory that accumulates, instead of just retrying until it passes. Use this as soon as `verification-result.yaml` has `result: fail` or `review-result.yaml` has `verdict: blocker`. Do NOT use it to log something that passed on the first try — ratchet-log only records failures, it is not a normal execution log.'
+activation:
+  phases: [verify, review]
+authority: proposal
+output:
+  artifact: ratchet-log.yaml (in the .gft/ of the PROJECT using the harness, not this harness itself)
+  template: templates/ratchet-log.yaml
+verification:
+  method: script
+  command: scripts/validate.sh ratchet-log <path-to-.gft/ratchet-log.yaml>
+  pass_criteria:
+    - each entry has a valid id/task_id/phase/failure_class/root_cause/status
+    - an entry with status other than 'open' must have a non-empty control_added
+content_hash: 227ed8dbb11b804eca31b1c13d1f940dd6a831cc7c0f77cc8ea511cf8adc7b09

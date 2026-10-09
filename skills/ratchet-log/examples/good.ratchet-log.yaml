@@ -1,0 +1,21 @@
+entries:
+  - id: RATCHET-001
+    task_id: TASK-042
+    date: "2026-03-05"
+    phase: verify
+    failure_class: scope-creep
+    description: "The developer edited the payment module too, when the task-spec only allowed the notification module."
+    root_cause: "allowed_scope in the task-spec listed the shared parent folder of both modules, which was not narrow enough."
+    control_added: "rules/protected-paths.yaml: added escalate_paths for **/payment/** so every future change must ask first."
+    status: regression-added
+    owner: phudd
+  - id: RATCHET-002
+    task_id: TASK-051
+    date: "2026-03-06"
+    phase: review
+    failure_class: hallucination
+    description: "The code reviewer reported a blocker verdict because the developer claimed to have run the test suite, but the log did not match."
+    root_cause: "verify-change did not require attaching the real output of the test command, only the exit code."
+    control_added: ""
+    status: open
+    owner: phudd

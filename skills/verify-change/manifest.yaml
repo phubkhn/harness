@@ -1,0 +1,19 @@
+id: verify-change
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Runs the declared verification commands for a change and records evidence (real exit code, pass/fail for each acceptance criterion). Use this right after implementation is done, before review. Do NOT use it to judge the quality/scope/safety of a diff — that is the job of `review-change`/`security-review`. verify-change only answers "does it run", not "if it runs, is it correct".'
+activation:
+  phases: [verify]
+authority: read-only
+output:
+  artifact: verification-result.yaml
+  template: templates/verification-result.yaml
+  suggested_dir: docs/verify/  # suggestion (H-07 pilot) — not required, a project can override this through .gft/project.yaml
+verification:
+  method: script
+  command: scripts/validate.sh verify-change <path-to-verification-result.yaml>
+  pass_criteria:
+    - each command has an exit_code field
+    - each acceptance criterion id from the task spec appears together with a result
+content_hash: 45f4e1382529a6ebb99e3555e6f2878b9853dd58d365393bed0f0795fd9578da

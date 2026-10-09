@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet that executes this file (see skills/README.md).
+id: task-spec-smoke
+skill: task-spec
+scenario: "A raw request, partly ambiguous (e.g. 'add a health check endpoint') is given to this skill."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

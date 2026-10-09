@@ -1,0 +1,17 @@
+id: architecture-principles
+version: 1.0.0
+description: General architecture principles, used in every project no matter the tech stack. Unlike rules/stacks/*.yaml, this rule does not depend on a path condition — it always applies when a module or component structure changes.
+severity: advisory
+applies_to: [agent, skill]
+statements:
+  - id: layered-boundaries
+    text: A lower layer (data/infra) must not import back up into a higher layer (domain/application/presentation). Dependencies must go in one direction only, from outside to inside or from top to bottom, following the layering chosen for the project.
+  - id: no-circular-dependencies
+    text: Do not create a circular dependency between modules or packages. If two modules need to know about each other, pull the shared part out into a third module.
+  - id: single-source-of-truth
+    text: Config, constants, and business rules must not be duplicated in more than one place. If a value or rule already exists, reuse it instead of defining it again.
+  - id: explicit-module-boundaries
+    text: A cross-module call must go through that module's public interface or contract (export, public API, port). Do not reach directly into the internal or private implementation of another module.
+  - id: bounded-responsibility
+    text: A file, class, or function should have only one reason to change. When a unit of code carries several unrelated responsibilities, that is a sign it should be split — raise it as a finding, not as a reason to block the work.
+note: This is a design principle, and it can have reasonable exceptions (for example, a known exemplar or technical constraint). When breaking it is intentional, write the reason clearly in an ADR or task spec, instead of going against the principle silently.

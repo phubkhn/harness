@@ -1,0 +1,17 @@
+# expect_fail: allowed_scope and protected_scope overlap
+id: TASK-051
+outcome: "Change the error response format to the RFC 7807 standard."
+risk_tier: R2
+acceptance_criteria:
+  - id: AC-1
+    given: "The endpoint returns a 400 error"
+    when: "A client calls it with bad input"
+    then: "The error body follows the RFC 7807 standard"
+allowed_scope:
+  - "api/errors/"
+protected_scope:
+  - "api/errors/"
+constraints: []
+out_of_scope: []
+open_questions: []
+details_ref: ""

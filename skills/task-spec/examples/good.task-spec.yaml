@@ -1,0 +1,24 @@
+id: TASK-042
+outcome: "The /public/search endpoint rejects requests over 100 req/minute per API key with HTTP 429."
+risk_tier: R1
+acceptance_criteria:
+  - id: AC-1
+    given: "A client sends under 100 requests/minute with the same API key"
+    when: "It calls /public/search"
+    then: "It gets a normal response"
+  - id: AC-2
+    given: "A client sends over 100 requests/minute with the same API key"
+    when: "It calls /public/search"
+    then: "It gets HTTP 429 with a Retry-After header"
+allowed_scope:
+  - "gateway/config/rate-limit.yaml"
+  - "gateway/tests/"
+protected_scope:
+  - "gateway/auth/"
+constraints:
+  - "Do not change the behavior of other endpoints."
+out_of_scope:
+  - "Rate limiting by user id (left for ADR-001, a later phase)."
+open_questions: []
+details_ref: ""
+scope_amendments: []

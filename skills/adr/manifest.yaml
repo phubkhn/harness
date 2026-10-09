@@ -1,0 +1,19 @@
+id: adr
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Record an important architecture decision that is hard to reverse or open to debate. Include the options you considered and the downside of each option. Use this at the spec or plan stage when there is more than one reasonable way to solve the problem. Do NOT use it for a small decision that is easy to reverse, or when there is only one reasonable option — write that directly in the task-spec. Do not create an ADR for every choice.'
+activation:
+  phases: [spec, plan]
+authority: proposal
+output:
+  artifact: adr.yaml
+  template: templates/adr.yaml
+  suggested_dir: docs/adr/  # suggestion (H-07 pilot) — not required, the project can override this in .gft/project.yaml
+verification:
+  method: script
+  command: scripts/validate.sh adr <path-to-filled-adr.yaml>
+  pass_criteria:
+    - all required fields are present: title, context, options, decision
+    - each option in options has at least one cons (downside)
+content_hash: 93c428dbb2d5f0e393c2cc7604a32dfff387a799f7bbc1d1469e8387d1b6afad

@@ -1,0 +1,13 @@
+id: change-management
+version: 1.0.0
+description: General rules about change discipline within a task. This adds to rules/protected-paths.yaml (which paths cannot be written to) and rules/safety-invariants.yaml (do not edit your own spec or rule). Those two rules say what must NOT be touched. This rule says how a valid change must be recorded and traced.
+severity: blocking
+applies_to: [agent, skill]
+statements:
+  - id: no-scope-creep
+    text: Only edit the paths that are inside the `allowed_scope` of the task spec you are running. If you find that you need to edit a path outside that scope to finish the task, stop and report it instead of expanding the scope yourself.
+  - id: traceability-to-spec-or-adr
+    text: Every meaningful change (not a typo or formatting fix) should be traceable to a specific task-spec or ADR. The commit message or PR description must name the related task-spec or ADR when one exists.
+  - id: migration-note-for-breaking-change
+    text: A breaking change (a schema change, an API contract change, or a default behavior change) must have a migration note in the PR description or ADR. It must state clearly who or what is affected and how to migrate.
+note: The no-scope-creep rule here is about the allowed_scope discipline of the task spec (level 3 in rules/context-hierarchy.yaml). It does not replace rules/protected-paths.yaml, which is the list of paths that are always blocked, no matter what the task spec says.

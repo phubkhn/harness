@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet that executes this file (see skills/README.md).
+id: review-change-smoke
+skill: review-change
+scenario: "A small diff has one finding with severity blocker (e.g. it deletes a test), and needs an independent review."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

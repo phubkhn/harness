@@ -1,0 +1,10 @@
+# expect_fail: there is a finding with severity blocker but verdict is
+task_id: TASK-051
+findings:
+  - severity: blocker
+    file: "api/users/handler.go"
+    line: 88
+    summary: "The endpoint does not check permission before returning another user's data."
+verdict: approve
+ratchet_ref: ""
+details_ref: ""

@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet to run this file (see skills/README.md).
+id: feature-roadmap-smoke
+skill: feature-roadmap
+scenario: "The feature 'IT staff performance management' still has 2 open questions (360 feedback level, HRM integration) with no answer -> the skill must stop and ask, not decide split_decision on its own. After the questions are answered, the user chooses staged (skeleton first, business logic later) -> record 2 stages with different risk_tier values (R1 for the skeleton, R2 for the stage that touches auth/permission)."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

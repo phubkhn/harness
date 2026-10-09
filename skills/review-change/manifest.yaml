@@ -1,0 +1,21 @@
+id: review-change
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Does an independent, read-only review of a diff, checked against rules and acceptance criteria. Use this after verify-change, before the change is applied/merged. Do NOT use it to re-run tests or implementation — review-change only reads, it does not run anything again. For a deeper security review (authn/authz, secrets, input validation), also use `security-review` in parallel. It does not replace review-change.'
+activation:
+  phases: [review]
+authority: read-only
+output:
+  artifact: review-result.yaml
+  template: templates/review-result.yaml
+  suggested_dir: docs/review/  # suggestion (H-07 pilot) — not required, a project can override this through .gft/project.yaml
+  allowed_values: [approve, blocker]
+verification:
+  method: script
+  command: scripts/validate.sh review-change <path-to-review-result.yaml>
+  pass_criteria:
+    - the verdict field is approve or blocker
+    - verdict is blocker whenever there is a finding with severity blocker
+    - when verdict is blocker, ratchet_ref must not be empty
+content_hash: ad964f3fa0698c00a8ed5115bd8be15d4f19ea93fde198c68fffd367aa9c848e

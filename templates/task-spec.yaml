@@ -1,0 +1,24 @@
+# Copy this file to start a new task. Fill in every field; do not delete a field you left empty on purpose.
+id: TASK-001
+outcome: ""                 # one sentence: what observable outcome does this task produce?
+risk_tier: R1                # R0 read-only | R1 isolated bounded-write | R2 proposal-only | R3/R4 deny
+acceptance_criteria:
+  - id: AC-1
+    given: ""
+    when: ""
+    then: ""
+allowed_scope:
+  - ""                       # path/module that this task is allowed to change
+protected_scope:
+  - ""                       # path that this task must never change (besides rules/protected-paths.yaml)
+constraints:
+  - ""
+out_of_scope:
+  - ""
+open_questions:
+  - ""
+details_ref: ""              # optional — path to a .md file with more detail (not required, not checked by validate.sh)
+scope_amendments: []          # optional — path to approved templates/scope-amendment.yaml files,
+                               # if allowed_scope/constraints/acceptance_criteria need to grow during
+                               # execute (see agents/developer/agent.md — this line is filled in by a
+                               # different role than the agent running the task, not by the developer itself)

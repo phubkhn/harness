@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "example-server": {
+      "command": "python3",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp/servers/example_server.py"],
+      "env": {
+        "LOG_DIR": "${CLAUDE_PLUGIN_ROOT}/mcp/logs"
+      }
+    }
+  }
+}

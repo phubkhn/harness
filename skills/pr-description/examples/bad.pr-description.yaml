@@ -1,0 +1,8 @@
+# expect_fail: breaking_change must be true or false
+task_id: TASK-051
+summary: "Change the response format of the /users endpoint."
+changed_paths:
+  - "api/users/handler.go"
+verification_ref: "verification-result-TASK-051.yaml"
+review_ref: "review-result-TASK-051.yaml"
+breaking_change: null

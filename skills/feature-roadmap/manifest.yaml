@@ -1,0 +1,21 @@
+id: feature-roadmap
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Decide and record whether a feature needs to split into several task-specs by stage (staged), or stay as one task (single), after all blocking open questions are answered. Use this before writing the first task-spec of a feature, when the outcome is big or risky enough to consider splitting by risk tier or technical dependency. Do NOT use it for a small, clear fix that fits in one task (for example, a one-line fix) — skip it and go straight to `task-spec`.'
+activation:
+  phases: [spec]
+authority: proposal
+output:
+  artifact: feature-roadmap.yaml
+  template: templates/feature-roadmap.yaml
+  suggested_dir: docs/spec/  # suggestion (H-07 pilot) — not required, the project can override this in .gft/project.yaml
+verification:
+  method: script
+  command: scripts/validate.sh feature-roadmap <path-to-filled-feature-roadmap.yaml>
+  pass_criteria:
+    - open_questions_resolved must be true before split_decision is treated as final
+    - split_decision is 'single' or 'staged'
+    - if staged, there are at least 2 stages, each with a non-empty scope_summary and risk_tier
+    - depends_on only points to a stage_no that exists in this same roadmap
+content_hash: 62f1030b5fe761ef5311ed69a2c2b59e188dba1b274e4c8d0ac7035992554ddf

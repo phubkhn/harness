@@ -1,0 +1,13 @@
+task_id: TASK-042
+cases:
+  - id: TC-1
+    acceptance_criteria_ref: AC-1
+    kind: integration
+    description: "A client under the rate limit threshold still gets a normal response."
+    covers_negative_path: false
+  - id: TC-2
+    acceptance_criteria_ref: AC-1
+    kind: integration
+    description: "A client over the rate limit threshold gets HTTP 429."
+    covers_negative_path: true
+open_questions: []

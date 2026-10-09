@@ -1,0 +1,22 @@
+id: plan-review
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Review an implementation plan against the harness rules and the task spec, before any code is written. Use this before starting to execute a non-trivial task, or whenever the plan touches an escalate_path. Do NOT use it after the code is already written — that is the job of `review-change`. plan-review only looks at a plan that is still on paper.'
+activation:
+  phases: [plan]
+authority: proposal
+output:
+  artifact: plan-review-result
+  template: templates/plan-review-result.yaml
+  suggested_dir: docs/plan/  # suggestion (H-07 pilot) — not required, the project can override this in .gft/project.yaml
+  allowed_values: [approved, changes-requested, escalate]
+verification:
+  method: script
+  command: scripts/validate.sh plan-review <path-to-result.yaml>
+  pass_criteria:
+    - the verdict field is one of approved, changes-requested, escalate
+    - each finding references a step in the plan
+    - an approved verdict requires task_spec_ref/task_spec_hash (a snapshot that prevents a silent edit of the task-spec)
+    - if there are several review rounds, each round in 'rounds' gets the same finding rule as the last round, and the last round must match the verdict at the top of the file
+content_hash: 3f8e9aeb6824ed44fafdee93e8f9406e60200c77e1eb911345e8aba3aa380c6f

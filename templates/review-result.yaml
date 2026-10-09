@@ -1,0 +1,10 @@
+# Copy this file when running review-change / code-reviewer.
+task_id: ""
+findings:
+  - severity: ""              # blocker | major | minor
+    file: ""
+    line: 0
+    summary: ""
+verdict: ""                   # approve | blocker — must be blocker if any finding above has severity: blocker
+ratchet_ref: ""                # required if verdict: blocker — id of the entry in .gft/ratchet-log.yaml (see skills/ratchet-log/SKILL.md)
+details_ref: ""               # optional — path to a .md file with more detail (not required, not checked by validate.sh)

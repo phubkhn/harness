@@ -1,0 +1,9 @@
+# Scaffold: no eval runner executes this file yet (see agents/README.md).
+id: solution-architect-smoke
+agent: solution-architect
+scenario: "A request to choose between 2 data storage options (SQL vs NoSQL) for a new feature, with a latency constraint."
+expected:
+  schema_valid: true
+  policy_violations: 0
+  terminal_state: success-or-escalated
+status: scaffold-only

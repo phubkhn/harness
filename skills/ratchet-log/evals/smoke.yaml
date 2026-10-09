@@ -1,0 +1,8 @@
+# Scaffold: there is no eval runner yet to run this file (see skills/README.md).
+id: ratchet-log-smoke
+skill: ratchet-log
+scenario: "verify-change returns acceptance_results with 1 item at result: fail — the skill must create a ratchet-log entry with a reasonable failure_class and write ratchet_ref back into verification-result.yaml."
+expected:
+  schema_valid: true
+  policy_violations: 0
+status: scaffold-only

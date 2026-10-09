@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# PreToolUse hook for Edit/Write: rejects a protected_path, and warns on an escalate_path.
+# Reads the Claude Code hook JSON payload from stdin.
+set -euo pipefail
+
+HOOK_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PLUGIN_ROOT="$(cd "$HOOK_DIR/.." && pwd)"
+RULES_FILE="$PLUGIN_ROOT/rules/protected-paths.yaml"
+
+exec python3 "$HOOK_DIR/check_protected_paths.py" "$RULES_FILE" "$PLUGIN_ROOT"

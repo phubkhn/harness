@@ -1,0 +1,19 @@
+id: test-plan
+type: skill
+version: 1.0.0
+owner: gft-harness
+description: 'Decides what to test before writing code. Maps each test case to an acceptance criterion in the task-spec, and requires a case for the failure path. Use this at plan, before the developer starts implementing and before verify-change runs any evidence. Do NOT use it to record evidence that already ran — that is the job of `verify-change`. test-plan only decides before there is code.'
+activation:
+  phases: [plan]
+authority: proposal
+output:
+  artifact: test-plan.yaml
+  template: templates/test-plan.yaml
+  suggested_dir: docs/plan/  # suggestion (H-07 pilot) — not required, a project can override this through .gft/project.yaml
+verification:
+  method: script
+  command: scripts/validate.sh test-plan <path-to-filled-test-plan.yaml>
+  pass_criteria:
+    - cases is not empty, each case has a stable id and an acceptance_criteria_ref
+    - at least one case has covers_negative_path true
+content_hash: bdec50d9b6f2f63e90690faf380e070a4d0872ae9ee133d2b4e863f8ea7f5350

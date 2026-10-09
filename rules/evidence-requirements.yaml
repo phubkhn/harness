@@ -1,0 +1,15 @@
+id: evidence-requirements
+version: 1.0.0
+description: What must be recorded before a task can be considered verified.
+severity: blocking
+applies_to: [agent, skill]
+required_evidence:
+  - task_spec_version_and_source
+  - exact_changed_paths
+  - commands_run_with_exit_codes
+  - acceptance_criteria_result_per_item
+  - independent_review_findings
+  - remaining_risks_or_open_questions
+rule: Self-reported success ("it runs now", "it's done") is not evidence. Evidence must be something that can be reproduced by running the same declared command again.
+fresh_evidence_only: Evidence must come from the most recent command run, in the current session itself. Do not reuse the output of an earlier run (even an earlier run by this same agent), and do not trust another agent's or subagent's self-reported success without running it again yourself or reading the raw diff/output of that run yourself.
+banned_hedge_phrases: [should pass, should work, probably passes, probably fine, probably works, surely fine, surely done]

@@ -1,0 +1,38 @@
+# Copy this file as .gft/project.yaml AT THE ROOT OF THE PROJECT THAT USES THE HARNESS (not in
+# this harness repo). This is the concrete form of level 2, "project-config", in
+# rules/context-hierarchy.yaml: it can only ADD constraints, never loosen a
+# harness rule (level 1). If you do not use a field, leave it empty/an empty list, do not delete the key.
+version: 1
+
+project:
+  id: ""                       # e.g.: gft-payment-service
+  owner_team: ""                # the team responsible, used when escalation is needed
+  jira_key: ""                  # optional — ticket prefix, used to generate the task-spec id
+
+stacks: []                      # decided by hand (after checking the output of scripts/detect_stack.sh),
+                                 # not detected again each time — e.g.: [java-spring]
+
+commands:
+  build: ""                     # the real build command for this project
+  test: ""                      # REQUIRED — verify-change/qa-engineer needs this command to produce evidence
+  lint: ""
+
+# You can only ADD to the list in rules/protected-paths.yaml, never overwrite or remove from it.
+# No "*_override" field is accepted by validate.sh — see validate_project_config.
+protected_paths_extra: []
+escalate_paths_extra: []
+
+approvals:
+  escalate_path_approver: ""    # who/which group approves when an escalate path is touched
+
+# Optional (H-07 pilot) — override the default output.suggested_dir suggestion for each
+# skill (see skills/*/manifest.yaml). No validator forces this field;
+# it is just a convention so the agent does not have to "learn" it from a file it read earlier.
+# Delete this whole block if the project does not need its own layout.
+doc_layout:
+  intake: docs/intake/
+  spec: docs/spec/
+  plan: docs/plan/
+  adr: docs/adr/
+  verify: docs/verify/
+  review: docs/review/

@@ -1,0 +1,15 @@
+# Copy this file when a feature is big or risky enough to think about splitting it into several
+# task-specs by stage, before running /gft:spec. If the feature is small and fits in one task, still
+# create this file with split_decision: single, as proof that you thought about it — do not skip this step.
+id: ROADMAP-001
+feature_ref: ""                  # optional — id of the intake-brief, or a description of the original feature
+outcome: ""                      # one sentence: the final outcome of the WHOLE feature (not a single task)
+open_questions_resolved: false   # true only when EVERY blocking open_question from intake/spec has a final answer
+split_decision: single           # single | staged — only counts as final when open_questions_resolved: true
+stages:
+  - stage_no: 1
+    task_ref: ""                 # id of the matching task-spec, fill in after that task-spec is created
+    scope_summary: ""            # one sentence that sums up the scope of this stage
+    risk_tier: R1
+    depends_on: []               # list of stage_no values that must finish before this stage can start
+    rationale: ""                # why this stage is split out on its own (risk/complexity/dependency/approval)
